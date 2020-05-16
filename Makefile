@@ -9,6 +9,12 @@ REPO_NAME ?= microtrader
 TEST_REPO_NAME ?= microtrader-dev
 TEST_DIR ?= build/test-results/junit/
 
+# Make sure this points to the Elastic Container Registry path
+DOCKER_REGISTRY ?= 980013191458.dkr.ecr.eu-west-2.amazonaws.com
+AWS_CLI_REGION ?=eu-west-2
+AWS_ACCOUNT_ID ?= 980013191458
+DOCKER_LOGIN_EXPRESSION := bash -c 'aws ecr get-login-password --region $(AWS_CLI_REGION) | docker login --username AWS --password-stdin $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_CLI_REGION).amazonaws.com'
+
 # Release settings
 export HTTP_PORT ?= 8000
 export AUDIT_HTTP_ROOT ?= /audit/

@@ -19,5 +19,6 @@ public class Migrate {
                 config.getString("jdbc.user"), 
                 config.getString("jdbc.password"));
         flyway.migrate();
+        System.out.println("Success");
     }
 }
